@@ -1464,6 +1464,8 @@ class OTXserver
 						}
 					}
 					$formula = html_convert_entities($formula);
+					if ($style === 'mathlatex') // latex formula can contain htmlspecialchars
+						$formula = '<![CDATA[' . $formula . ']]>';
 					$df = $dom->createDocumentFragment();
 					$df->appendXML($formula);
 					
